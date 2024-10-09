@@ -1,6 +1,8 @@
 # 金狗科技微信客服
 
-- https://github.com/fundgao/wechaty
+- https://wechaty.gitbook.io/wechaty/zh/quick-start
+- https://github.com/wechaty/wechaty
+- https://github.com/beclass/wxbot
 
 # Start
 

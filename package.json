@@ -1,0 +1,14 @@
+{
+  "name": "wechat-bot",
+  "version": "1.0.0",
+  "description": "金狗科技微信客服",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "goldoge",
+  "license": "ISC",
+  "dependencies": {
+    "wechaty": "^1.20.2"
+  }
+}

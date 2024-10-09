@@ -1,7 +1,9 @@
-# Tauri
-使用web前端构建更小、更快、更安全的桌面应用程序
+# 金狗科技微信客服
 
-## [创建Tauri项目](https://www.tauri.net.cn/30.html)
+- https://github.com/fundgao/wechaty
 
+# Start
 
-Next.js + Rust
+- `npm init`
+- `npm install wechaty`
+- `node index.js`

@@ -1,14 +1,18 @@
 {
-  "name": "wechat-bot",
-  "version": "1.0.0",
-  "description": "金狗科技微信客服",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "wxbot-plugin",
+  "version": "0.0.1",
+  "description": "微信机器人插件版",
+  "author": "lwp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beclass/wxbot"
   },
-  "author": "goldoge",
-  "license": "ISC",
+  "scripts": {
+    "start": "node index"
+  },
   "dependencies": {
-    "wechaty": "^1.20.2"
+    "wechaty": "^0.47.7",
+    "wechaty-puppet-padlocal": "^0.7.34",
+    "wechaty-plugin-contrib": "^0.14.12"
   }
 }

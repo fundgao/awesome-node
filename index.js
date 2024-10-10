@@ -1,13 +1,9 @@
 /*
  * @Desc: 本地插件版
- * @Author: lwp
- * @Date: 2020-08-13 15:20:49
- * @LastEditors: lwp
- * @LastEditTime: 2020-08-13 17:15:06
  */
 
 const { WechatyBuilder } = require("wechaty");
-const { PUPPET_PADLOCAL_TOKEN, BOT_NAME } = require("./config");
+const { BOT_NAME } = require("./config");
 const FriendPass = require("./plugin/friends-pass");
 const RoomJoin = require("./plugin/room-join");
 const RoomInvite = require("./plugin/room-invite");

@@ -1,11 +1,13 @@
-# 金狗科技微信客服
+# NodeJS | 脚本 | 常用库 | 学习
 
-- https://wechaty.gitbook.io/wechaty/zh/quick-start
-- https://github.com/wechaty/wechaty
-- https://github.com/beclass/wxbot
-
-# Start
+## Start
 
 - `npm init`
-- `npm install wechaty`
-- `node index.js`
+
+## 文件批量重命名
+
+- `file_rename.js`
+
+### RUN
+
+- `npm run start:rename`

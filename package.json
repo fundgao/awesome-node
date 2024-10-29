@@ -1,18 +1,16 @@
 {
-  "name": "wxbot-plugin",
-  "version": "0.0.1",
-  "description": "微信机器人插件版",
-  "author": "lwp",
+  "name": "awesome-node",
+  "version": "1.0.0",
+  "description": "NodeJS | 脚本 | 常用库 | 学习",
+  "author": "Fund",
+  "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/beclass/wxbot"
+    "url": "https://github.com/fundgao/awesome-node"
   },
   "scripts": {
-    "start": "node index"
+    "start:rename": "node file_rename.js"
   },
   "dependencies": {
-    "wechaty": "^1.20.2",
-    "wechaty-puppet-padlocal": "^1.20.1",
-    "wechaty-plugin-contrib": "^1.12.2"
   }
 }

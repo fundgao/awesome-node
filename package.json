@@ -9,8 +9,11 @@
     "url": "https://github.com/fundgao/awesome-node"
   },
   "scripts": {
-    "start:rename": "node file_rename.js"
+    "start:rename": "node src/file_rename",
+    "start:puppeteer": "node src/puppeteer"
   },
   "dependencies": {
+    "puppeteer": "^23.6.1",
+    "puppeteer-core": "^23.6.1"
   }
 }

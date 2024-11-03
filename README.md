@@ -1,4 +1,6 @@
-# NodeJS | 脚本 | 常用库 | 学习
+# NodeJS | 脚本 | 爬虫 | Socket + AI
+
+- https://nodejs.org/zh-cn/learn/getting-started/introduction-to-nodejs
 
 ## Start
 

@@ -31,3 +31,27 @@
 ### RUN
 
 - `npm run start:qiankun`
+
+## socket.io
+
+### RUN
+
+- `npm run start:socket-server`
+- `npm run start:socket-client`
+
+### AI
+
+- https://www.volcengine.com/ 火山引擎
+- https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint?config=%7B%7D
+
+### 教程
+
+- https://socket.io/zh-CN/docs/v4/server-api/#new-serveroptions
+- https://juejin.cn/post/7375048434128224291?searchId=202411020852589BDAAD7370F19A6709FF 掘金教程
+
+### AI 聊天 思路
+
+- AI Node 服务抽离
+- Socket 设置房间
+- Node 服务记录用户调用频率、IP、浏览器指纹
+- 控制单日总次数、单用户频率

@@ -10,11 +10,16 @@
   },
   "scripts": {
     "start:rename": "node src/file_rename",
-    "start:puppeteer": "node src/puppeteer"
+    "start:puppeteer": "node src/puppeteer",
+    "start:socket-server": "node src/socket/server",
+    "start:socket-client": "node src/socket/client"
   },
   "dependencies": {
+    "openai": "^4.70.2",
     "puppeteer": "^23.6.1",
     "puppeteer-core": "^23.6.1",
-    "qiankun": "^2.10.16"
+    "qiankun": "^2.10.16",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   }
 }

@@ -12,9 +12,11 @@
     "start:rename": "node src/file_rename",
     "start:puppeteer": "node src/puppeteer",
     "start:socket-server": "node src/socket/server",
-    "start:socket-client": "node src/socket/client"
+    "start:socket-client": "node src/socket/client",
+    "start:mqtt": "node src/mqtt-client"
   },
   "dependencies": {
+    "mqtt": "^5.10.1",
     "openai": "^4.70.2",
     "puppeteer": "^23.6.1",
     "puppeteer-core": "^23.6.1",

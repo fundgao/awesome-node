@@ -1,4 +1,4 @@
-# NodeJS | 脚本 | 爬虫 | Socket + AI
+# NodeJS | 脚本 | 爬虫 | Socket + AI | MQTT | Node 邮箱
 
 - https://nodejs.org/zh-cn/learn/getting-started/introduction-to-nodejs
 
@@ -57,3 +57,12 @@
 - Socket 设置房间
 - Node 服务记录用户调用频率、IP、浏览器指纹
 - 控制单日总次数、单用户频率
+
+## MQTT
+
+- https://www.emqx.com/zh/blog/how-to-use-mqtt-in-nodejs
+- https://cloud.emqx.com/console/deployments/baf6b77f/overview
+
+### RUN
+
+- `npm run start:mqtt`

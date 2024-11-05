@@ -16,7 +16,10 @@
     "start:mqtt": "node src/mqtt-client"
   },
   "dependencies": {
+    "imap": "^0.8.19",
+    "mailparser": "^3.7.1",
     "mqtt": "^5.10.1",
+    "nodemailer": "^6.9.16",
     "openai": "^4.70.2",
     "puppeteer": "^23.6.1",
     "puppeteer-core": "^23.6.1",

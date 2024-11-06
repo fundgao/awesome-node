@@ -6,6 +6,10 @@ import nodemailer from "nodemailer";
  * POP3服务器: pop.163.com
  * SMTP服务器: smtp.163.com
  * IMAP服务器: imap.163.com
+ *
+ * nodemailer、keyv插件实现免费的邮件验证码注册功能 TODO
+ * https://www.npmjs.com/package/keyv
+ *
  */
 
 const transporter = nodemailer.createTransport({

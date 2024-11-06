@@ -1,5 +1,9 @@
 import { io } from "socket.io-client";
-
+/**
+ * 前端加解密之 Crypto Socket.io 使用加密 TODO
+ * https://juejin.cn/post/7208837219212935228?searchId=2024110617061311F699F6B58A1131A476
+ * https://www.jianshu.com/p/f94a6c8cafaa
+ */
 const onSocket = () => {
   const aichat = io("ws://localhost:3003/aichat");
   aichat.on("connect", () => {

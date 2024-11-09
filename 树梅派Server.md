@@ -33,3 +33,28 @@
 - `./cpolar http 80`
 
 ## Git 自带需配置
+
+- 配置 user.name `git config --global user.name "name"`
+- 配置 user.email `git config --global user.email "email"`
+- 生成 SSH key `ssh-keygen -t rsa -C "email"`
+
+## MySQL
+
+- `sudo apt install mysql-server`
+- `sudo mysql`
+- `use mysql;` 注意分号
+- 设置密码 `alter user 'root'@'localhost' identified with mysql_native_password by '密码';`
+
+### MySQL 开启远程访问
+
+- 修改配置 `sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf`
+  注释掉 bind-address 这一行，将其修改为：
+
+```
+  # bind-address = 127.0.0.1
+  bind-address = 0.0.0.0
+```
+
+- 重启 MySQL 服务 `sudo systemctl restart mysql`
+- `mysql -u root -p`
+- 开启端口 3306 `sudo ufw allow 3306/tcp`

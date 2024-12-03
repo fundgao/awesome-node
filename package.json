@@ -13,9 +13,11 @@
     "start:puppeteer": "node src/puppeteer",
     "start:socket-server": "node src/socket/server",
     "start:socket-client": "node src/socket/client",
-    "start:mqtt": "node src/mqtt-client"
+    "start:mqtt": "node src/mqtt-client",
+    "start:csv": "node src/csv2json"
   },
   "dependencies": {
+    "csv-parser": "^3.0.0",
     "imap": "^0.8.19",
     "keyv": "^5.1.3",
     "mailparser": "^3.7.1",

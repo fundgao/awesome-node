@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Flipper</title>
+</head>
+<style>
+  .flip {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 100px;
+    line-height: 100px;
+    border: solid 1px #000;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 66px;
+    color: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-family: "Helvetica Neue";
+
+    .digital:before,
+    .digital:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      background: #000;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .digital:before {
+      top: 0;
+      bottom: 50%;
+      border-radius: 10px 10px 0 0;
+      border-bottom: solid 1px #666;
+    }
+
+    .digital:after {
+      top: 50%;
+      bottom: 0;
+      border-radius: 0 0 10px 10px;
+      line-height: 0;
+    }
+
+    .number0:before,
+    .number0:after {
+      content: "0";
+    }
+
+    .number1:before,
+    .number1:after {
+      content: "1";
+    }
+
+    .number2:before,
+    .number2:after {
+      content: "2";
+    }
+
+    .number3:before,
+    .number3:after {
+      content: "3";
+    }
+
+    .number4:before,
+    .number4:after {
+      content: "4";
+    }
+
+    .number5:before,
+    .number5:after {
+      content: "5";
+    }
+
+    .number6:before,
+    .number6:after {
+      content: "6";
+    }
+
+    .number7:before,
+    .number7:after {
+      content: "7";
+    }
+
+    .number8:before,
+    .number8:after {
+      content: "8";
+    }
+
+    .number9:before,
+    .number9:after {
+      content: "9";
+    }
+  }
+
+  .flip.down {
+    .front:before {
+      z-index: 3;
+    }
+
+    .back:after {
+      z-index: 2;
+      transform-origin: 50% 0%;
+      transform: perspective(160px) rotateX(180deg);
+    }
+
+    .front:after,
+    .back:before {
+      z-index: 1;
+    }
+  }
+
+  .flip.down.go {
+    .front:before {
+      transform-origin: 50% 100%;
+      animation: frontFlipDown 0.6s ease-in-out both;
+      box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
+      backface-visibility: hidden;
+    }
+
+    .back:after {
+      animation: backFlipDown 0.6s ease-in-out both;
+    }
+  }
+
+  .flip.up {
+    .front:after {
+      z-index: 3;
+    }
+
+    .back:before {
+      z-index: 2;
+      transform-origin: 50% 100%;
+      transform: perspective(160px) rotateX(-180deg);
+    }
+
+    .front:before,
+    .back:after {
+      z-index: 1;
+    }
+  }
+
+  .flip.up.go {
+    .front:after {
+      transform-origin: 50% 0;
+      animation: frontFlipUp 0.6s ease-in-out both;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
+      backface-visibility: hidden;
+    }
+
+    .back:before {
+      animation: backFlipUp 0.6s ease-in-out both;
+    }
+  }
+
+  .clock {
+    text-align: center;
+    margin-bottom: 200px;
+
+    em {
+      display: inline-block;
+      line-height: 102px;
+      font-size: 66px;
+      font-style: normal;
+      vertical-align: top;
+    }
+  }
+
+  @keyframes frontFlipDown {
+    0% {
+      transform: perspective(160px) rotateX(0deg);
+    }
+
+    100% {
+      transform: perspective(160px) rotateX(-180deg);
+    }
+  }
+
+  @keyframes backFlipDown {
+    0% {
+      transform: perspective(160px) rotateX(180deg);
+    }
+
+    100% {
+      transform: perspective(160px) rotateX(0deg);
+    }
+  }
+
+  @keyframes frontFlipUp {
+    0% {
+      transform: perspective(160px) rotateX(0deg);
+    }
+
+    100% {
+      transform: perspective(160px) rotateX(180deg);
+    }
+  }
+
+  @keyframes backFlipUp {
+    0% {
+      transform: perspective(160px) rotateX(-180deg);
+    }
+
+    100% {
+      transform: perspective(160px) rotateX(0deg);
+    }
+  }
+</style>
+
+<body>
+  </div>
+  <div class="clock" id="clock">
+    <div class="flip down">
+      <div class="digital front number0"></div>
+      <div class="digital back number1"></div>
+    </div>
+    <div class="flip down">
+      <div class="digital front number0"></div>
+      <div class="digital back number1"></div>
+    </div>
+    <em>:</em>
+    <div class="flip down">
+      <div class="digital front number0"></div>
+      <div class="digital back number1"></div>
+    </div>
+    <div class="flip down">
+      <div class="digital front number0"></div>
+      <div class="digital back number1"></div>
+    </div>
+    <em>:</em>
+    <div class="flip down">
+      <div class="digital front number0"></div>
+      <div class="digital back number1"></div>
+    </div>
+    <div class="flip down">
+      <div class="digital front number0"></div>
+      <div class="digital back number1"></div>
+    </div>
+  </div>
+</body>
+<script>
+  class Flipper {
+    constructor(config) {
+      this.config = {
+        node: null,
+        frontText: "number0",
+        backText: "number1",
+        duration: 600,
+        ...config, // ES6 对象扩展，用来覆盖默认值
+      };
+      this.nodeClass = {
+        flip: "flip",
+        front: "digital front",
+        back: "digital back",
+      };
+      this.frontNode = this.config.node.querySelector(".front");
+      this.backNode = this.config.node.querySelector(".back");
+      this.isFlipping = false;
+      this._init();
+    }
+    _init() {
+      this._setFront(this.config.frontText);
+      this._setBack(this.config.backText);
+    }
+    _setFront(className) {
+      this.frontNode.className = `${ this.nodeClass.front } ${ className }`;
+    }
+    _setBack(className) {
+      this.backNode.className = `${ this.nodeClass.back } ${ className }`;
+    }
+    _flip(type, front, back) {
+      if (this.isFlipping) return;
+      this.isFlipping = true;
+      this._setFront(front);
+      this._setBack(back);
+      let flipClass = `${ this.nodeClass.flip } ${ type }`;
+      this.config.node.className = `${ flipClass } go`;
+      setTimeout(() => {
+        this.config.node.className = flipClass;
+        this.isFlipping = false;
+        this._setFront(back);
+      }, this.config.duration);
+    }
+    flipDown(front, back) {
+      this._flip("down", front, back);
+    }
+    flipUp(front, back) {
+      this._flip("up", front, back);
+    }
+  }
+  const clock = document.getElementById("clock");
+  const flips = clock.querySelectorAll(".flip");
+  const formatDate = (date, format) => {
+    if (/(y+)/.test(format)) {
+      format = format.replace(
+        RegExp.$1,
+        (date.getFullYear() + "").substr(4 - RegExp.$1.length)
+      );
+    }
+    const o = {
+      "m+": date.getMonth() + 1,
+      "d+": date.getDate(),
+      "h+": date.getHours(),
+      "i+": date.getMinutes(),
+      "s+": date.getSeconds(),
+    };
+    for (const k in o) {
+       if (new RegExp(`(${k})`).test(format)) {
+        const str = o[k] + "";
+        format = format.replace(
+          RegExp.$1,
+          RegExp.$1.length === 1 ? str : padLeftZero(str)
+        );
+      }
+    }
+    return format;
+  };
+  const padLeftZero = (str) => `00${str}`.substr(str.length);
+  const now = new Date();
+  const nowTimeStr = formatDate(now, "hhiiss");
+  const nextTimeStr = formatDate(new Date(now.getTime() + 1000), "hhiiss");
+  const flipObjs = [...flips].map((flip, i) =>
+    new Flipper({
+      node: flip,
+      frontText: `number${ nowTimeStr[i]}`,
+      backText: `number${ nextTimeStr[i]}`,
+      })
+    );
+  setInterval(() => {
+    const now = new Date();
+    const nowTimeStr = formatDate(new Date(now.getTime() - 1000), "hhiiss");
+    const nextTimeStr = formatDate(now, "hhiiss");
+    flipObjs.forEach((flipper, i) => {
+      if (nowTimeStr[i] !== nextTimeStr[i]) {
+         flipper.flipDown(`number${nowTimeStr[i]}`, `number${nextTimeStr[i]}`);
+      }
+    });
+  }, 1000);
+</script>
+
+</html>

@@ -1,4 +1,4 @@
-# Node 脚本 | 爬虫 | Socket + AI | MQTT | Node 邮箱 | [股票涨停榜爬取](https://goldoge-fundgaos-projects.vercel.app/)
+# Node 脚本 | 爬虫 | Socket + AI | MQTT | Node 邮箱 | [股票涨停榜爬取](https://goldoge.vercel.app)
 
 - https://nodejs.org/zh-cn/learn/getting-started/introduction-to-nodejs
 

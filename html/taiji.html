@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太极图</title>
+    <style>
+        body {
+            background-color: #eee;
+        }
+        .circle {
+            margin-top: 3rem;
+            box-sizing: border-box;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            padding-left: 50px;
+            background-image: linear-gradient(to left, #fff, #fff 50%, #000 50%, #000);
+            animation: roll 10s linear infinite;
+            /* 反向旋转 */
+            animation-direction: reverse;
+        }
+        .yinyang {
+            position: relative;
+            background-color: #fff;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-image: linear-gradient(to left, #fff, #fff 50%, #000 50%, #000);
+            /* 4秒中完成一次匀速动画，并循环播放 */
+            animation: roll 4s linear infinite;
+        }
+        .yinyang::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border: 18px solid #000;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+        }
+        .yinyang::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            border: 18px solid #fff;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+        }
+        @keyframes roll {
+            from {
+                /* 从零度开始 */
+                transform: rotate(0deg);
+            }
+
+            to {
+                /* 旋转一周 */
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+         <div class="yinyang"></div>
+         <div class="yinyang"></div>
+    </div>
+</body>
+</html>

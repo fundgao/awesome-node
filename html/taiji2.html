@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太极图</title>
+    <style>
+        body {
+            background-color: #eee;
+        }
+       .taiji {
+            position: relative;
+            margin: 20% auto 0;
+            width: 200px;
+            height: 200px;
+            background-image: linear-gradient(#fff 50%, #000 0);
+            border-radius: 100px;
+        }
+        .taiji::before {
+            position: absolute;
+            z-index: 1;
+            content: '';
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #fff;
+            top: 85px;
+            left: 35px;
+            box-shadow: 100px 0 0 0 #000;
+        }
+        .taiji::after {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            content: '';
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+            border-radius: 50px;
+            box-shadow: 100px 0 0 0 #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="taiji"></div>
+</body>
+</html>

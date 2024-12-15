@@ -28,6 +28,8 @@
     "puppeteer": "^23.6.1",
     "puppeteer-core": "^23.6.1",
     "qiankun": "^2.10.16",
+    "react": "^19.0.0",
+    "react-blurry-gradient": "^1.0.1",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1"
   }

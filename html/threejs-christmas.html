@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>完整的圣诞树</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // 创建场景
+        let scene = new THREE.Scene();
+        // 高级版圣诞树 https://cdn.shenchuliwu.com/prp/0C8bD/christmas?id3d=35zrM46L&mode=dark
+
+        // 添加背景颜色
+        scene.background = new THREE.Color(0x002633);
+
+        // 创建相机
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // 创建渲染器
+        let renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // 创建材质
+        let brownMaterial = new THREE.MeshBasicMaterial({ color: 0x7f4014 });
+        let greenMaterial = new THREE.MeshBasicMaterial({ color: 0x006400, transparent: true, opacity: 0.8 });
+        let redMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        let yellowMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+
+        // 创建树干
+        let trunkGeometry = new THREE.CylinderGeometry(0.2, 0.4, 1.6, 8);
+        let trunk = new THREE.Mesh(trunkGeometry, brownMaterial);
+        scene.add(trunk);
+
+        // 创建树叶
+        let leavesGeometry = new THREE.ConeGeometry(1.2, 2.4, 8);
+        let leaves = new THREE.Mesh(leavesGeometry, greenMaterial);
+        leaves.position.y = 1.6;
+        scene.add(leaves);
+
+        // 创建彩灯
+        let lightGeometry = new THREE.SphereGeometry(0.1, 4, 4);
+        let lights = [];
+        let colors = [redMaterial, yellowMaterial, new THREE.MeshBasicMaterial({ color: 0x0000ff }), new THREE.MeshBasicMaterial({ color: 0x00ff00 })];
+        let angles = [0, Math.PI / 3, 2 * Math.PI / 3, Math.PI, 4 * Math.PI / 3, 5 * Math.PI / 3];
+        for (let i = 0; i < angles.length; i++) {
+            let light = new THREE.Mesh(lightGeometry, colors[i % 4]);
+            light.position.set(Math.cos(angles[i]) * 0.9, 2.2, Math.sin(angles[i]) * 0.9);
+            scene.add(light);
+            lights.push(light);
+        }
+
+        // 创建星星
+        let starGeometry = new THREE.SphereGeometry(0.2, 4, 4);
+        let star = new THREE.Mesh(starGeometry, yellowMaterial);
+        star.position.y = 2.7;
+        scene.add(star);
+
+        // 创建礼物盒
+        let giftGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+        let giftMaterials = [
+            new THREE.MeshBasicMaterial({ color: 0xff0000 }),
+            new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+            new THREE.MeshBasicMaterial({ color: 0x0000ff }),
+            new THREE.MeshBasicMaterial({ color: 0xffff00 }),
+            new THREE.MeshBasicMaterial({ color: 0xff00ff }),
+            new THREE.MeshBasicMaterial({ color: 0x00ffff })
+        ];
+        let giftMesh = new THREE.Mesh(giftGeometry, giftMaterials);
+        giftMesh.position.set(0, -1.3, 0);
+        scene.add(giftMesh);
+
+        // 添加雪花效果
+        let snowFlakeGeometry = new THREE.BufferGeometry();
+        let positions = [];
+        for (let i = 0; i < 1000; i++) {
+            positions.push(Math.random() * 2000 - 1000);
+            positions.push(Math.random() * 2000 - 1000);
+            positions.push(Math.random() * 2000 - 1000);
+        }
+        snowFlakeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        let snowFlakeMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
+        let snowFlake = new THREE.Points(snowFlakeGeometry, snowFlakeMaterial);
+        scene.add(snowFlake);
+
+
+        // 渲染循环
+        function animate() {
+            requestAnimationFrame(animate);
+            trunk.rotation.y += 0.01;
+            leaves.rotation.y += 0.01;
+            for (let i = 0; i < lights.length; i++) {
+                lights[i].rotation.y += 0.02;
+            }
+            snowFlake.rotation.y -= 0.001;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+
+</html>

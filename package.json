@@ -36,7 +36,8 @@
     "react": "^18.3.1",
     "react-blurry-gradient": "^1.0.1",
     "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
+    "socket.io-client": "^4.8.1",
+    "web3": "^4.16.0"
   },
   "devDependencies": {
     "@rspack/cli": "^1.1.8",

@@ -37,6 +37,8 @@
     "react-blurry-gradient": "^1.0.1",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
+    "viem": "^2.21.57",
+    "wagmi": "^2.14.6",
     "web3": "^4.16.0"
   },
   "devDependencies": {

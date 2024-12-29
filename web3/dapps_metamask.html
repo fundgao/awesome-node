@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web3.js MetaMask Tutorial</title>
+    <!-- import Web3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+
+<body>
+    <!-- placeholders -->
+    <div id="provider"></div>
+    <div id="chainId"></div>
+    <div id="latestBlock"></div>
+    <div id="warn" style="color: red"></div>
+    <script type="module">
+        // ensure that there is an injected the Ethereum provider
+        if (window.ethereum) {
+            // use the injected Ethereum provider to initialize Web3.js
+            const web3 = new Web3(window.ethereum);
+
+            // check if Ethereum provider comes from MetaMask
+            if (window.ethereum.isMetaMask) {
+                document.getElementById('provider').innerText =
+                    'Connected to Ethereum with MetaMask.';
+            } else {
+                document.getElementById('provider').innerText =
+                    'Non-MetaMask Ethereum provider detected.';
+            }
+
+            // get chain ID and populate placeholder
+            document.getElementById(
+                'chainId',
+            ).innerText = `Chain ID: ${await web3.eth.getChainId()}`;
+            // get latest block and populate placeholder
+            document.getElementById(
+                'latestBlock',
+            ).innerText = `Latest Block: ${await web3.eth.getBlockNumber()}`;
+
+            // subscribe to new blocks and update UI when a new block is created
+            const blockSubscription = await web3.eth.subscribe('newBlockHeaders');
+            blockSubscription.on('data', block => {
+                document.getElementById(
+                    'latestBlock',
+                ).innerText = `Latest Block: ${block.number}`;
+            });
+        } else {
+            // no Ethereum provider - instruct user to install MetaMask
+            document.getElementById('warn').innerHTML =
+                "Please <a href='https://metamask.io/download/'>install MetaMask</a>.";
+        }
+    </script>
+</body>
+
+</html>

@@ -58,3 +58,4 @@
 - 重启 MySQL 服务 `sudo systemctl restart mysql`
 - `mysql -u root -p`
 - 开启端口 3306 `sudo ufw allow 3306/tcp`
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>函数执行器</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 80px;
+        }
+        input {
+            width: 300px;
+            line-height: 40px;
+            padding: 0 10px;
+        }
+        button {
+            padding: 0 20px;
+            line-height: 40px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>函数执行器</h1>
+    <input id="codeInput" placeholder='例如：cat.walk("tomy")' />
+    <button onclick="callFunction()">执行</button>
+    <div class="result">
+        <strong>执行结果:</strong>
+        <span id="output"></span>
+    </div>
+    <script>
+        function callFunction() {
+            const input = document.getElementById('codeInput').value;
+            fetch('/run', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code: input })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('output').innerText = data.result || data.error;
+            });
+        }
+    </script>
+</body>
+
+</html>

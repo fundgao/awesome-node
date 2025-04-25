@@ -1,0 +1,17 @@
+{
+  "name": "interview",
+  "version": "1.0.0",
+  "description": "bit.ai interview",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [
+    "interview"
+  ],
+  "author": "Fund",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
